@@ -127,8 +127,16 @@ function kirimRSVP(){
  const ucapan=document.getElementById('ucapan').value.trim();
  const notice=document.getElementById('rsvpNotice');
  if(!nama || !hadir){notice.textContent='Mohon isi nama dan konfirmasi kehadiran terlebih dahulu.';return;}
- const pesan=`Assalamu'alaikum, saya ingin mengonfirmasi kehadiran pada acara pernikahan Bay & Diana.%0A%0ANama: ${encodeURIComponent(nama)}%0AKehadiran: ${encodeURIComponent(hadir)}%0AUcapan & doa: ${encodeURIComponent(ucapan || '-')}%0A%0ATerima kasih.`;
- window.open('https://wa.me/6285335260088?text='+pesan,'_blank');
+
+ const pesan =
+ `RSVP Undangan Bay & Diana\n\n` +
+ `Nama: ${nama}\n` +
+ `Kehadiran: ${hadir}\n` +
+ `Ucapan & doa: ${ucapan || '-'}\n\n` +
+ `Terima kasih.`;
+
+ const url='https://wa.me/6285335260088?text='+encodeURIComponent(pesan);
+ window.open(url,'_blank');
 }
 function copyDana(){
  navigator.clipboard.writeText('085335260088').then(()=>document.getElementById('copied').textContent='Nomor DANA berhasil disalin.');
